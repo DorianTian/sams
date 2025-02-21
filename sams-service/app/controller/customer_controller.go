@@ -1,9 +1,10 @@
 package controller
 
 import (
-	"github.com/gin-gonic/gin"
 	"net/http"
-	"sams/app/service"
+	customer_service "sams/app/service"
+
+	"github.com/gin-gonic/gin"
 )
 
 type CustomerController struct {
@@ -23,5 +24,10 @@ func (c *CustomerController) GetAllCustomers(ctx *gin.Context) {
 		return
 	}
 
-	ctx.JSON(http.StatusOK, customers)
+	response := gin.H{
+		"code": 200,
+		"data": customers,
+	}
+
+	ctx.JSON(http.StatusOK, response)
 }

@@ -3,7 +3,7 @@ import axios from 'axios'
 const axiosClient = axios.create({})
 
 // apiService.js (JavaScript)
-const BASE_URL = '/' // 后端 API 根路径
+const BASE_URL = 'http://192.168.3.32:8080' // 后端 API 根路径
 
 // 通用的请求方法
 async function fetchAPI(endpoint, method = 'GET', body = null) {
@@ -26,11 +26,11 @@ async function fetchAPI(endpoint, method = 'GET', body = null) {
     const response = await axiosClient(`${BASE_URL}${endpoint}`, options)
 
     // 如果响应状态不是 2xx，抛出错误
-    if (!response.ok) {
+    if (response.status !== 200) {
       throw new Error(`HTTP error! Status: ${response.status}`)
     }
 
-    const data = await response.json()
+    const data = response.data
     return data
   } catch (error) {
     console.error('API 请求出错:', error)

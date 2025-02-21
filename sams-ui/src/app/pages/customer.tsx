@@ -4,7 +4,6 @@ import React, { useCallback, useEffect } from 'react'
 import { getAllCustomers } from '@/rest/CustomerAPI'
 
 const Customer = () => {
-
   const queryCustomers = useCallback(async () => {
     const res = await getAllCustomers()
 
@@ -12,8 +11,8 @@ const Customer = () => {
   }, [])
 
   useEffect(() => {
-    queryCustomers().then(r => console.log('r: ', r))
-  }, [])
+    queryCustomers().then((r) => console.log('r: ', r))
+  }, [queryCustomers])
 
   return <div>customer </div>
 }

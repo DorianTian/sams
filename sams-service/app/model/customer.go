@@ -13,5 +13,5 @@ type Customer struct {
 }
 
 func (Customer) TableName() string {
-	return "customer"
+	return "sams.public.customers"
 }
